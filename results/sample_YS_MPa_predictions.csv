@@ -1,0 +1,6 @@
+austenitizing_temp_C,section_thickness_mm,quench_medium,tempering_temp_C,tempering_time_hr
+850,20,air,450,2
+850,20,oil,500,2
+850,20,water,550,2
+860,20,oil,500,2
+860,20,water,550,2

@@ -1,0 +1,6 @@
+austenitizing_temp_C,section_thickness_mm,quench_medium,tempering_temp_C,tempering_time_hr,Predicted_elongation_pct
+850,20,air,450,2,20.658406791706437
+850,20,oil,500,2,22.11783156435747
+850,20,water,550,2,24.055753037313366
+860,20,oil,500,2,22.192343621041026
+860,20,water,550,2,24.149351691321417

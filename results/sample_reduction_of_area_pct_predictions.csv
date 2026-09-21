@@ -1,0 +1,6 @@
+austenitizing_temp_C,section_thickness_mm,quench_medium,tempering_temp_C,tempering_time_hr,Predicted_reduction_of_area_pct
+850,20,air,450,2,46.80242788444885
+850,20,oil,500,2,50.6076105399008
+850,20,water,550,2,52.677603514674935
+860,20,oil,500,2,50.6076105399008
+860,20,water,550,2,52.677603514674935

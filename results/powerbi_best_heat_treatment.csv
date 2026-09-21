@@ -1,0 +1,2 @@
+austenitizing_temp_C,section_thickness_mm,quench_medium,tempering_temp_C,tempering_time_hr,objective_error,hardness_HRC,UTS_MPa,YS_MPa,elongation_pct,reduction_of_area_pct
+869.852917098453,50,water,307.8474688154762,3.104166652573253,0.07407027952590212,46.254749865775125,1501.9985124494442,1250.388520558324,14.039317237540512,35.7352384909801
