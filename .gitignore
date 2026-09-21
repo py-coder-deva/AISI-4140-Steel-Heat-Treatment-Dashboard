@@ -1,0 +1,68 @@
+# ==============================
+# Python
+# ==============================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# ==============================
+# IDE / Editor
+# ==============================
+
+.vscode/
+.idea/
+
+# ==============================
+# OS files
+# ==============================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==============================
+# Python temporary files
+# ==============================
+
+*.log
+*.tmp
+
+# ==============================
+# Python build files
+# ==============================
+
+build/
+dist/
+*.egg-info/
+
+# ==============================
+# Power BI temporary files
+# ==============================
+
+*.pbi/
+*.pbit
+
+# ==============================
+# Temporary / backup files
+# ==============================
+
+*.bak
+*.swp
+*.swo
+
+# ==============================
+# Personal / local configuration
+# ==============================
+
+.env
+.env.*
+*.local
