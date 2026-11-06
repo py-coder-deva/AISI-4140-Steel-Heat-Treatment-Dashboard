@@ -84,17 +84,11 @@ The project follows a two-stage workflow: first, predictive models are trained t
 
 ## Power BI Dashboards
 
-### Latest Dashboard
-
-The latest dashboard screenshot added to the repository is displayed below.
-
-![Latest AISI 4140 heat treatment dashboard](visualization/Screenshot%202026-11-06%20204555.png)
-
 ### 1. Inverse Heat Treatment Process Cycle Dashboard
 
 The dashboard displays the target mechanical properties, selected quenching medium, optimized process parameters, generated temperature–time cycle and target-versus-predicted property comparison.
 
-![AISI 4140 inverse heat treatment process cycle dashboard](visualization/Heat%20Treatment%20Dashboard.png)
+![AISI 4140 inverse heat treatment process cycle dashboard](visualization/Screenshot%202026-11-06%20204555.png)
 
 ### 2. Machine Learning Model Performance Dashboard
 
