@@ -2,73 +2,66 @@
 
 An integrated **Machine Learning + Metallurgical Engineering + Power BI** project that uses inverse optimization to identify suitable heat-treatment parameters for AISI 4140 steel based on desired mechanical properties.
 
----
+## Project Overview
 
-## 1. Project Overview
+Heat treatment parameters such as austenitizing temperature, quenching medium, tempering temperature and tempering duration strongly influence the mechanical properties of steel.
 
-Heat treatment plays a critical role in determining the mechanical properties and performance of steel components. Parameters such as austenitizing temperature, quenching medium, tempering temperature and tempering duration directly influence the resulting mechanical properties.
+This project explores an inverse-design approach: users specify the desired mechanical properties, and the system uses trained machine-learning regression models with gradient-descent-based optimization to identify candidate heat-treatment process parameters. The optimized parameters are then used to generate a temperature–time process cycle, visualized in Power BI.
 
-In conventional heat-treatment design, engineers generally select process parameters and then evaluate the resulting material properties.
+The modelling dataset is synthetic; predictions and optimized process conditions should therefore be treated as exploratory results requiring experimental validation before industrial use.
 
-This project explores the reverse approach.
+## Project Objectives
 
-A user specifies the desired mechanical properties of AISI 4140 steel, and the system uses machine learning models and gradient-descent-based inverse optimization to identify suitable heat-treatment process parameters.
+- Develop regression models linking heat-treatment conditions to mechanical properties.
+- Use inverse optimization to search for process parameters that match user-defined property targets.
+- Apply gradient descent to iteratively update continuous process variables.
+- Generate and visualize a candidate heat-treatment process cycle.
+- Integrate Python-based modelling with an interactive Power BI dashboard.
 
-The optimized parameters are subsequently used to generate a temperature-time heat-treatment cycle, which is visualized through an interactive Power BI dashboard.
+## Input and Output Parameters
 
-## 2. Project Objectives
-
-- Develop machine learning models to establish process-property relationships for AISI 4140 steel.
-- Implement inverse optimization to identify heat-treatment conditions corresponding to desired mechanical properties.
-- Apply gradient descent to optimize process parameters against target mechanical properties.
-- Generate heat-treatment process cycles using the optimized parameters.
-- Integrate Python-based machine learning with Microsoft Power BI.
-- Evaluate model performance using regression metrics and actual-versus-predicted visualizations.
-
-## 3. System Architecture and Methodology
-
-The project consists of two interconnected stages.
-
-### Stage 1: Machine Learning Model Development
-
-A synthetic dataset containing approximately 1,100 observations and 11 variables is used to develop regression models.
-
-The models establish relationships between heat-treatment parameters and mechanical properties.
-
-**Input process parameters:**
-- Austenitizing temperature (°C)
+**User-defined targets**
+- Hardness (HRC)
+- Ultimate tensile strength (MPa)
+- Yield strength (MPa)
+- Elongation (%)
+- Reduction of area (%)
 - Section thickness (mm)
-- Quenching medium
+
+**Optimized process parameters**
+- Austenitizing temperature (°C)
+- Quenching medium (air, oil or water)
 - Tempering temperature (°C)
 - Tempering time (hours)
 
-**Predicted mechanical properties:**
-- Hardness (HRC)
-- Ultimate Tensile Strength (MPa)
-- Yield Strength (MPa)
-- Elongation (%)
-- Reduction of Area (%)
+## Methodology
 
-### Stage 2: Inverse Heat Treatment Optimization
+1. Prepare and preprocess the synthetic heat-treatment dataset.
+2. Train regression models to predict mechanical properties from process parameters.
+3. Evaluate the models using MAE, RMSE and R².
+4. Accept the user's target mechanical properties.
+5. Use the trained prediction models within an inverse optimization loop.
+6. Apply gradient descent to update the process variables and reduce the difference between target and predicted properties.
+7. Use the optimized parameters to construct a heat-treatment temperature–time cycle.
+8. Display the results in Power BI.
 
-Instead of directly predicting mechanical properties from process parameters, the system uses the trained predictive models within an inverse optimization framework.
+## Power BI Dashboards
 
-The workflow is:
+### 1. Inverse Heat Treatment Process Cycle Dashboard
 
-1. User specifies the desired mechanical properties.
-2. Initial heat-treatment parameters are selected.
-3. The trained machine learning models estimate the resulting mechanical properties.
-4. Prediction errors relative to the target properties are evaluated.
-5. Gradient descent iteratively updates the process parameters.
-6. The optimized parameters are used to construct a heat-treatment process cycle.
+The dashboard displays the target mechanical properties, selected quenching medium, optimized process parameters, generated temperature–time cycle and target-versus-predicted property comparison.
 
-The objective is to minimize the difference between desired and model-predicted mechanical properties.
+![AISI 4140 inverse heat treatment process cycle dashboard](visualization/Heat%20Treatment%20Dashboard.png)
 
-## 4. Machine Learning Models and Performance
+### 2. Machine Learning Model Performance Dashboard
 
-Gradient Boosting and tuned Gradient Boosting regression models are used for predicting the mechanical properties.
+The model-performance dashboard presents R², MAE and RMSE comparisons, model evaluation metrics, actual-versus-predicted plots and the overall machine-learning-to-inverse-optimization workflow.
 
-### Model Evaluation Results
+![AISI 4140 machine learning model performance dashboard](visualization/Heat_Treatment_Dashboard_ML.png)
+
+## Model Performance
+
+The project evaluates five property-specific regression models.
 
 | Property | Model | MAE | RMSE | R² |
 |---|---|---:|---:|---:|
@@ -78,147 +71,51 @@ Gradient Boosting and tuned Gradient Boosting regression models are used for pre
 | Reduction of Area (%) | Tuned Gradient Boosting | 1.9396 | 2.5020 | 0.9308 |
 | Yield Strength (MPa) | Tuned Gradient Boosting | 27.3791 | 37.7089 | 0.9890 |
 
-**Evaluation metrics:**
-- MAE: Mean Absolute Error
-- RMSE: Root Mean Squared Error
-- R²: Coefficient of Determination
+*Metrics are measured on the project's synthetic dataset and should not be interpreted as expected performance on real industrial data.*
 
-The results indicate strong predictive performance across the five mechanical properties within the synthetic dataset.
+## Example Inverse Design Result
 
-## 5. Power BI Dashboard
-
-The project includes two interactive Power BI dashboards.
-
-### A. Inverse Heat Treatment Process Cycle Dashboard
-
-The dashboard allows users to specify target mechanical properties and section thickness.
-
-The system displays:
-- Target mechanical properties.
-- Selected quenching medium (Air, Oil or Water).
-- Optimized austenitizing temperature.
-- Optimized tempering temperature.
-- Optimized tempering duration.
-- Generated temperature-time process cycle.
-- Target-versus-predicted mechanical property comparison.
-
-### B. Machine Learning Model Performance Dashboard
-
-This dashboard provides an overview of model performance and the inverse optimization workflow.
-
-It includes:
-- R² comparison across mechanical properties.
-- MAE and RMSE comparisons.
-- Model evaluation metrics.
-- Actual-versus-predicted scatter plots.
-- Machine learning and inverse optimization workflow.
-
-## 6. Example Heat Treatment Design
-
-An example dashboard configuration uses the following target properties:
+One illustrative dashboard configuration uses the following targets:
 
 | Target property | Value |
 |---|---:|
 | Elongation | 12% |
 | Hardness | 40 HRC |
-| Section Thickness | 50 mm |
-| Reduction of Area | 35% |
+| Section thickness | 50 mm |
+| Reduction of area | 35% |
 | UTS | 1300 MPa |
-| Yield Strength | 1100 MPa |
+| Yield strength | 1100 MPa |
 
-The displayed optimized process parameters are:
+The dashboard displays the following optimized process parameters for this example:
 
-| Process parameter | Optimized value |
+| Process parameter | Result |
 |---|---:|
-| Austenitizing Temperature | 828.07 °C |
-| Tempering Temperature | 350.87 °C |
-| Tempering Time | 1.50 hours |
-| Quenching Medium | Water |
+| Austenitizing temperature | 828.07 °C |
+| Tempering temperature | 350.87 °C |
+| Tempering time | 1.50 hours |
+| Quenching medium | Water |
 
-The dashboard subsequently generates the corresponding temperature-time heat-treatment cycle.
+These are model-generated example outputs, not experimentally validated production recommendations.
 
-*These values are an illustrative model-generated design, not experimentally validated production recommendations.*
+## Technology Stack
 
-## 7. Technology Stack
+- **Programming:** Python
+- **Data processing:** NumPy, Pandas
+- **Machine learning:** Scikit-learn
+- **Optimization:** Gradient descent
+- **Visualization:** Matplotlib, Microsoft Power BI
+- **Data transformation:** Power Query
 
-| Category | Technologies |
-|---|---|
-| Programming Language | Python |
-| Data Processing | NumPy, Pandas |
-| Machine Learning | Scikit-learn |
-| Optimization | Gradient Descent |
-| Data Visualization | Matplotlib |
-| Business Intelligence | Microsoft Power BI |
-| Data Transformation | Power Query |
+## Limitations and Future Work
 
-## 8. Project Workflow
+- The current dataset is synthetic and requires replacement or supplementation with experimental and industrial data.
+- High test performance on synthetic data does not establish generalization to real AISI 4140 components.
+- Optimized process conditions need to be checked against metallurgical constraints, transformation behaviour, section size and applicable heat-treatment standards.
+- Future work can incorporate physics-informed constraints, microstructural descriptors and experimental validation.
 
-```text
-       Synthetic Dataset
-               |
-               v
-       Data Preprocessing
-               |
-               v
-        Feature Engineering
-               |
-               v
-      ML Regression Models
-               |
-               v
-       Model Evaluation
-               |
-               v
-       User Target Properties
-               |
-               v
-      Inverse Optimization
-        (Gradient Descent)
-               |
-               v
-    Optimized Process Parameters
-               |
-               v
-     Heat Treatment Cycle
-               |
-               v
-       Power BI Dashboard
-```
+## Author
 
-## 9. Engineering Significance
-
-This project demonstrates an application of machine learning in metallurgical process design.
-
-The primary focus is on connecting material-property requirements with manufacturing process parameters.
-
-By combining regression models, inverse optimization and interactive visualization, the project explores a data-driven approach to heat-treatment design.
-
-It also demonstrates how machine learning can complement conventional metallurgical engineering workflows by helping engineers explore possible processing conditions before experimental validation.
-
-## 10. Limitations
-
-- The current dataset is synthetic and does not replace experimental or industrial validation.
-- Model performance on synthetic data does not guarantee equivalent performance on real steel components.
-- Optimized parameters should be checked against metallurgical constraints, phase transformations, component geometry and industrial processing limitations.
-- The generated process cycles represent model-based recommendations rather than certified industrial heat-treatment procedures.
-
-## 11. Future Scope
-
-- Incorporate experimental heat-treatment datasets.
-- Integrate physical metallurgy constraints into the optimization framework.
-- Explore physics-informed machine learning.
-- Incorporate microstructural characteristics such as martensite fraction and carbide distribution.
-- Extend the framework to other alloy steel grades.
-- Develop a more comprehensive multi-objective optimization framework.
-
-## 12. Author
-
-**Devashish Prasad**
-
+**Devashish Prasad**  
 Metallurgical Engineering | Machine Learning | Computational Materials Science
 
-GitHub: [py-coder-deva](https://github.com/py-coder-deva)
-
----
-
-*This project explores the integration of machine learning and inverse optimization for metallurgical process design.*
+[GitHub Profile](https://github.com/py-coder-deva)
