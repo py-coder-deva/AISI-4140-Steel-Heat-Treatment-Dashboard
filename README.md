@@ -45,6 +45,43 @@ The modelling dataset is synthetic; predictions and optimized process conditions
 7. Use the optimized parameters to construct a heat-treatment temperature–time cycle.
 8. Display the results in Power BI.
 
+## Project Workflow
+
+The project follows a two-stage workflow: first, predictive models are trained to learn the relationship between heat-treatment conditions and mechanical properties; then, those models are used in an inverse optimization loop to search for process conditions that match user-defined property targets.
+
+```text
+             Synthetic Dataset
+                    |
+                    v
+          Data Preprocessing
+                    |
+                    v
+           Feature Engineering
+                    |
+                    v
+       Train Regression Models
+                    |
+                    v
+          Model Evaluation
+          (MAE, RMSE, R²)
+                    |
+                    v
+       User-Defined Target Properties
+                    |
+                    v
+        Inverse Optimization Loop
+             (Gradient Descent)
+                    |
+                    v
+       Optimized Process Parameters
+                    |
+                    v
+       Heat-Treatment Cycle Generation
+                    |
+                    v
+          Power BI Visualization
+```
+
 ## Power BI Dashboards
 
 ### 1. Inverse Heat Treatment Process Cycle Dashboard
